@@ -124,3 +124,10 @@ Please use Github for bugs, comments, suggestions.
 Eloquent-Sluggable was written by Colin Viebrock and released under the MIT License. See the LICENSE file for details.
 
 Copyright 2013 Colin Viebrock
+
+
+
+## Thanks
+
+Lots of thanks to https://bitbucket.org/hampel/validate-laravel for the structure of creating a package
+to add validator rules to Laravel, and setting up useful unit tests.
