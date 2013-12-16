@@ -110,10 +110,13 @@ class ImageSizeValidator extends Validator
 					throw new \RuntimeException('Unknown image size validation rule: ' . $rule );
 			}
 
-			return compact('message','pass');
-
 		}
-		throw new \RuntimeException('Unknown image size validation rule: ' . $rule );
+		else
+		{
+			throw new \RuntimeException('Unknown image size validation rule: ' . $rule );
+		}
+
+		return compact('message','pass');
 
 	}
 
