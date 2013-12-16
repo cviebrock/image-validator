@@ -76,7 +76,7 @@ class ImageSizeValidator extends Validator
 			$size1 = intval($matches[1]);
 			$size2 = intval($matches[2]);
 			$message = \Lang::get('imagesize-validator::validation.between', compact('size1','size2'));
-			$pass = ($dimension >= $size1) && ($dimension <= $size2)
+			$pass = ($dimension >= $size1) && ($dimension <= $size2);
 		}
 		else if ( preg_match('/^([<=>\*]*)(\d+)(\-\d+)?$/', $rule, $matches) )
 		{
