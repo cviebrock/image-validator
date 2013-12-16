@@ -68,14 +68,14 @@ class ImageSizeValidator extends Validator
 
 		if ($rule == '*')
 		{
-			$message = \Lang::get('imagesize-validator::validation.anysize');
+			$message = $this->translator->trans('imagesize-validator::validation.anysize');
 			$pass = true;
 		}
 		else if ( preg_match('/^(\d+)\-(\d+)$/', $rule, $matches) )
 		{
 			$size1 = intval($matches[1]);
 			$size2 = intval($matches[2]);
-			$message = \Lang::get('imagesize-validator::validation.between', compact('size1','size2'));
+			$message = $this->translator->trans('imagesize-validator::validation.between', compact('size1','size2'));
 			$pass = ($dimension >= $size1) && ($dimension <= $size2);
 		}
 		else if ( preg_match('/^([<=>\*]*)(\d+)(\-\d+)?$/', $rule, $matches) )
@@ -86,24 +86,24 @@ class ImageSizeValidator extends Validator
 			switch ($matches[1])
 			{
 				case '>':
-					$message = \Lang::get('imagesize-validator::validation.greaterthan', compact('size'));
+					$message = $this->translator->trans('imagesize-validator::validation.greaterthan', compact('size'));
 					$pass = $dimension > $size;
 					break;
 				case '>=':
-					$message = \Lang::get('imagesize-validator::validation.greaterthanorequal', compact('size'));
+					$message = $this->translator->trans('imagesize-validator::validation.greaterthanorequal', compact('size'));
 					$pass = $dimension >= $size;
 					break;
 				case '<':
-					$message = \Lang::get('imagesize-validator::validation.lessthan', compact('size'));
+					$message = $this->translator->trans('imagesize-validator::validation.lessthan', compact('size'));
 					$pass = $dimension < $size;
 					break;
 				case '<=':
-					$message = \Lang::get('imagesize-validator::validation.lessthanorequal', compact('size'));
+					$message = $this->translator->trans('imagesize-validator::validation.lessthanorequal', compact('size'));
 					$pass = $dimension <= $size;
 					break;
 				case '=':
 				case '':
-					$message = \Lang::get('imagesize-validator::validation.equal', compact('size'));
+					$message = $this->translator->trans('imagesize-validator::validation.equal', compact('size'));
 					$pass = $dimension == $size;
 					break;
 				default:
