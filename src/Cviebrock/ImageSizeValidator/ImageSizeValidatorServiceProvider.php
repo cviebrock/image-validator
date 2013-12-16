@@ -75,7 +75,7 @@ class ImageSizeValidatorServiceProvider extends ServiceProvider
 	protected function extendValidator($rule)
 	{
 		$method = 'validate' . studly_case($rule);
-		$translation = $this->app['translator']->get('imagesize-validator');
+		$translation = $this->app['translator']->get('imagesize-validator::validation');
 		$this->app['validator']->extend($rule, 'Cviebrock\ImageSizeValidator\ImageSizeValidator@' . $method, $translation[$rule]);
 	}
 
