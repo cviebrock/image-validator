@@ -15,12 +15,12 @@ class ImageSizeValidator extends Validator
 	}
 
 	/**
-	 * Usage: image_size: table, column1, column2, ...
+	 * Usage: image_size:width[,height]
 	 *
-	 * @param  [type] $attribute  [description]
-	 * @param  [type] $value      [description]
-	 * @param  [type] $parameters [description]
-	 * @return [type]             [description]
+	 * @param  $attribute  string
+	 * @param  $value      string|array
+	 * @param  $parameters array
+	 * @return boolean
 	 */
 	public function validateImageSize($attribute, $value, $parameters)
 	{
@@ -60,7 +60,13 @@ class ImageSizeValidator extends Validator
 
 	}
 
-
+	/**
+	 * Parse the dimension rule and check if the dimension passes the rule.
+	 *
+	 * @param  string  $rule
+	 * @param  integer $dimension
+	 * @return array
+	 */
 	protected function checkDimension($rule, $dimension=0)
 	{
 
@@ -120,14 +126,23 @@ class ImageSizeValidator extends Validator
 
 	}
 
-
-
-
+	/**
+	 * Build the error message for validation failures.
+	 *
+	 * @param  string $message
+	 * @param  string $attribute
+	 * @param  string $rule
+	 * @param  array $parameters
+	 * @return string
+	 */
 	public function replaceImageSize($message, $attribute, $rule, $parameters)
 	{
 
-		$width  = $this->checkDimension( $parameters[0] );
-		$height = $this->checkDimension( $parameters[1] );
+		$width = $height = $this->checkDimension( $parameters[0] );
+		if ( isset($parameters[1]) )
+		{
+			$height = $this->checkDimension( $parameters[1] );
+		}
 
 		return str_replace(
 			array( ':width', ':height' ),
