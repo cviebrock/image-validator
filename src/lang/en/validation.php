@@ -1,0 +1,13 @@
+<?php
+
+return array(
+	'imagesize'          => 'The :attribute must be :width wide by :height tall.',
+
+	'lessthan'           => 'less than :size pixels',
+	'lessthanorequal'    => 'less than or equal to :size pixels',
+	'greaterthan'        => 'greater than :size pixels',
+	'greaterthanorequal' => 'greater than or equal to :size pixels',
+	'equal'              => ':size pixels',
+	'anysize'            => 'any size',
+
+);
