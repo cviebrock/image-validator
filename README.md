@@ -75,7 +75,7 @@ If you only pass one value, it's assumed to apply to both dimensions (i.e. a squ
 		'logo' => 'required|image|image_size:300,*',
 	);
 
-	// logo must be 100px tall and 200-300 pixels wide (inclusive)
+	// logo must be at least 100px tall and 200-300 pixels wide (inclusive)
 
 	$rules = array(
 		'logo' => 'required|image|image_size:>=100,200-300',
