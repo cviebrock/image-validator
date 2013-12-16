@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	'imagesize'          => 'The :attribute must be :width wide by :height tall.',
+	'image_size'          => 'The :attribute must be :width wide by :height tall.',
 
 	'lessthan'           => 'less than :size pixels',
 	'lessthanorequal'    => 'less than or equal to :size pixels',

@@ -25,7 +25,7 @@ class ImageSizeValidatorServiceProvider extends ServiceProvider
         $this->app['validator']->resolver(function($translator, $data, $rules, $messages)
         {
             // Set custom validation error messages
-            $messages['imagesize'] = $translator->get('imagesize-validator::validation.imagesize');
+            $messages['image_size'] = $translator->get('imagesize-validator::validation.image_size');
 
             return new ImageSizeValidator($translator, $data, $rules, $messages);
         });
