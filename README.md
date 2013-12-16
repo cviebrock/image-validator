@@ -2,6 +2,15 @@
 
 This package allows you to validate images based on their dimensions.
 
+* [Installation](#installation)
+* [Usage](#usage)
+* [Examples](#examples)
+* [Bugs, Suggestions and Contributions](#bugs)
+* [Copyright and License](#copyright)
+
+
+
+<a name="installation"></a>
 ## Installation
 
 Install the package through [Composer](http://getcomposer.org).
@@ -11,16 +20,16 @@ In your `composer.json` file:
 ```json
 {
 	"require": {
-		"laravel/framework": "4.0.*",
+		"laravel/framework": "4.1.*",
 		// ...
-		"cviebrock/imagesize-validator": "dev-master"
+		"cviebrock/imagesize-validator": "1.*"
 	}
 }
 ```
 
 Run `composer install` or `composer update` to install the package.
 
-Add the following to your `providers` array in `config/app.php`:
+Add the following to your `providers` array in `app/config/app.php`:
 
 ```php
 'providers' => array(
@@ -30,6 +39,9 @@ Add the following to your `providers` array in `config/app.php`:
 ),
 ```
 
+
+
+<a name="usage"></a>
 ## Usage
 
 Use it like any `Validator` rule:
@@ -53,7 +65,9 @@ The values for _width_ and _height can be integers, or integers with a modifier 
 If you only pass one value, it's assumed to apply to both dimensions (i.e. a square image with the given dimensions).
 
 
-## Example
+
+<a name="examples"></a>
+## Examples
 
 ```php
 
@@ -85,6 +99,28 @@ If you only pass one value, it's assumed to apply to both dimensions (i.e. a squ
 ```
 
 
-# License
 
-MIT
+<a name="bugs"></a>
+## Bugs, Suggestions and Contributions
+
+Please use Github for bugs, comments, suggestions.
+
+1. Fork the project.
+2. Create your bugfix/feature branch and write your code.
+3. Create unit tests for your code:
+	- Run `composer install --dev` in the root directory to install required testing packages.
+	- Add your test methods to `tests/ValidatorTest.php`.
+	- Run `vendor/bin/phpunit` to the new (and all previous) tests and make sure everything passes.
+3. Commit your changes (and your tests) and push to your branch.
+4. Create a new pull request against the imagesize-validator `develop` branch.
+
+**Please note that you must create your pull request against the `develop` branch.**
+
+
+
+<a name="copyright"></a>
+## Copyright and License
+
+Eloquent-Sluggable was written by Colin Viebrock and released under the MIT License. See the LICENSE file for details.
+
+Copyright 2013 Colin Viebrock
