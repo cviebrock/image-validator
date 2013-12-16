@@ -13,9 +13,9 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
 	public function setUp()
 	{
 		$this->translator = Mockery::mock('Symfony\Component\Translation\TranslatorInterface');
-		$this->translator->shouldReceive('trans')->once()->with('');
+		$this->translator->shouldReceive('trans');
 		$this->data = array(
-			'image' => dirname(__FILE__) . '/200x300.png'
+			'image' => dirname(__FILE__) . '/images/200x300.png'
 		);
 	}
 
