@@ -22,7 +22,7 @@ In your `composer.json` file:
 	"require": {
 		"laravel/framework": "4.1.*",
 		// ...
-		"cviebrock/imagesize-validator": "0.1.*"
+		"cviebrock/imagesize-validator": "0.*"
 	}
 }
 ```
