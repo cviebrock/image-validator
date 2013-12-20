@@ -153,4 +153,95 @@ class ImageSizeValidator extends Validator
 	}
 
 
+	/**
+	 * Usage: image_aspect:ratio
+	 *
+	 * @param  $attribute  string
+	 * @param  $value      string|array
+	 * @param  $parameters array
+	 * @return boolean
+	 */
+	public function validateImageAspect($attribute, $value, $parameters)
+	{
+
+		// $value is the path to the image file.  If this is coming from uploads, then
+		// we need to grab that from the file upload array.
+
+		if ( is_array($value) && array_get($value, 'tmp_name') !== null) {
+			$value = $value['tmp_name'];
+		}
+
+		// Get the image dimension info, or fail.
+
+		$image_size = getimagesize( $value );
+		if ($image_size===false) return false;
+
+		$image_aspect = bcdiv($image_size[0], $image_size[1], 12);
+
+
+		// Parse the parameter(s).  Options are:
+		//
+		// 	"0.75"   - one param: a decimal ratio (width/height)
+		// 	"3,4"    - two params: width, height
+		//
+		// If the first value is prefixed with "~", the orientation doesn't matter, i.e.:
+		//
+		// 	"~3,4"   - would accept either "3:4" or "4:3" images
+
+		$both_orientations = false;
+
+		if (substr($parameters[0],0,1)=='~')
+		{
+			$parameters[0] = substr($parameters[0], 1);
+			$both_orientations = true;
+		}
+
+		if (count($parameters)==1)
+		{
+			$aspect = $parameters[0];
+		}
+		else
+		{
+			$width  = intval($parameters[0]);
+			$height = intval($parameters[1]);
+
+			if ($height==0 || $width==0)
+			{
+				throw new \RuntimeException('Aspect is zero or infinite: ' . $parameters[0] );
+			}
+			$aspect = bcdiv($width, $height, 12);
+		}
+
+		if ( bccomp($aspect, $image_aspect, 10) == 0 )
+		{
+			return true;
+		}
+
+		if ( $both_orientations ) {
+			$inverse = bcdiv(1, $aspect, 12);
+			if ( bccomp($inverse, $image_aspect, 10)==0 )
+			{
+				return true;
+			}
+		}
+
+		return false;
+
+	}
+
+
+	/**
+	 * Build the error message for validation failures.
+	 *
+	 * @param  string $message
+	 * @param  string $attribute
+	 * @param  string $rule
+	 * @param  array $parameters
+	 * @return string
+	 */
+	public function replaceImageAspect($message, $attribute, $rule, $parameters)
+	{
+		return str_replace( ':aspect', $parameters[0], $message );
+	}
+
 }

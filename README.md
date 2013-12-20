@@ -1,6 +1,6 @@
 # ImageSize Validator Rule For Laravel 4
 
-This package allows you to validate images based on their dimensions.
+This package allows you to validate images based on their dimensions or aspect ratio.
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -44,6 +44,8 @@ Add the following to your `providers` array in `app/config/app.php`:
 <a name="usage"></a>
 ## Usage
 
+### image_size
+
 Use it like any `Validator` rule:
 
 ```php
@@ -64,6 +66,25 @@ The values for _width_ and _height can be integers, or integers with a modifier 
 
 If you only pass one value, it's assumed to apply to both dimensions (i.e. a square image with the given dimensions).
 
+### image_aspect
+
+```php
+$rules = array(
+	'my_image_field' => 'image_aspect:<ratio>',
+);
+```
+
+The value for _ratio_ represents _width ÷ height_ and be either a decimal or two values (width, height; both integers):
+
+- `0.75`
+- `3,4`
+
+The value (or first value, if providing height and width) can also be prefixed with a tilde `~` character,
+in which case the orientation doesn't matter:
+
+- `~3,4` means the image can have an aspect ratio of either 3:4 or 4:3.
+
+Note that you may run into issues with floating point rounding.
 
 
 <a name="examples"></a>
@@ -93,6 +114,18 @@ If you only pass one value, it's assumed to apply to both dimensions (i.e. a squ
 
 	$rules = array(
 		'logo' => 'required|image|image_size:>=100,200-300',
+	);
+
+	// logo must be square
+
+	$rules = array(
+		'logo' => 'required|image|image_aspect:1',
+	);
+
+	// logo must be ready for the big screen TV :)
+
+	$rules = array(
+		'logo' => 'required|image|image_aspect:16:9',
 	);
 
 

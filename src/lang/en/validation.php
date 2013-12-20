@@ -10,4 +10,5 @@ return array(
 	'equal'              => ':size pixels',
 	'anysize'            => 'any size',
 
+	'image_aspect'       => 'The :attribute aspect ratio must be :aspect.',
 );
