@@ -2,6 +2,9 @@
 
 This package allows you to validate images based on their dimensions or aspect ratio.
 
+[![Latest Stable Version](https://poser.pugx.org/cviebrock/imagesize-validator/v/stable.png)](https://packagist.org/packages/cviebrock/imagesize-validator)
+[![Total Downloads](https://poser.pugx.org/cviebrock/imagesize-validator/downloads.png)](https://packagist.org/packages/cviebrock/imagesize-validator)
+
 * [Installation](#installation)
 * [Usage](#usage)
 * [Examples](#examples)
