@@ -26,9 +26,7 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->package('cviebrock/image-validator');
-
-		// $app = $this->app;
+		$this->package('cviebrock/image-validator', 'image-validator');
 
 		$this->app->bind('Cviebrock\ImageValidator\ImageValidator', function($app)
 		{
@@ -76,9 +74,10 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	 */
 	protected function extendValidator($rule)
 	{
-		$method = 'validate' . studly_case($rule);
+		$method = studly_case($rule);
 		$translation = $this->app['translator']->get('image-validator::validation');
-		$this->app['validator']->extend($rule, 'Cviebrock\ImageValidator\ImageValidator@' . $method, $translation[$rule]);
+		$this->app['validator']->extend($rule, 'Cviebrock\ImageValidator\ImageValidator@validate' . $method, $translation[$rule]);
+		$this->app['validator']->replacer($rule, 'Cviebrock\ImageValidator\ImageValidator@replace' . $method );
 	}
 
 

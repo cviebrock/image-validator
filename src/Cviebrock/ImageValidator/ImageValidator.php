@@ -1,7 +1,7 @@
 <?php namespace Cviebrock\ImageValidator;
 
 use Illuminate\Validation\Validator;
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageValidator extends Validator
 {
@@ -25,16 +25,11 @@ class ImageValidator extends Validator
 	public function validateImageSize($attribute, $value, $parameters)
 	{
 
-		// $value is the path to the image file.  If this is coming from uploads, then
-		// we need to grab that from the file upload array.
-
-		if ( is_array($value) && array_get($value, 'tmp_name') !== null) {
-			$value = $value['tmp_name'];
-		}
+		$image = $this->getImagePath( $value );
 
 		// Get the image dimension info, or fail.
 
-		$image_size = getimagesize( $value );
+		$image_size = @getimagesize( $image );
 		if ($image_size===false) return false;
 
 
@@ -60,6 +55,31 @@ class ImageValidator extends Validator
 
 	}
 
+	/**
+	 * Build the error message for validation failures.
+	 *
+	 * @param  string $message
+	 * @param  string $attribute
+	 * @param  string $rule
+	 * @param  array $parameters
+	 * @return string
+	 */
+	public function replaceImageSize($message, $attribute, $rule, $parameters)
+	{
+
+		$width = $height = $this->checkDimension( $parameters[0] );
+		if ( isset($parameters[1]) )
+		{
+			$height = $this->checkDimension( $parameters[1] );
+		}
+
+		return str_replace(
+			array( ':width', ':height' ),
+			array( $width['message'], $height['message'] ),
+			$message
+		);
+
+	}
 
 	/**
 	 * Usage: image_aspect:ratio
@@ -72,16 +92,11 @@ class ImageValidator extends Validator
 	public function validateImageAspect($attribute, $value, $parameters)
 	{
 
-		// $value is the path to the image file.  If this is coming from uploads, then
-		// we need to grab that from the file upload array.
-
-		if ( is_array($value) && array_get($value, 'tmp_name') !== null) {
-			$value = $value['tmp_name'];
-		}
+		$image = $this->getImagePath( $value );
 
 		// Get the image dimension info, or fail.
 
-		$image_size = getimagesize( $value );
+		$image_size = @getimagesize( $image );
 		if ($image_size===false) return false;
 
 		$image_aspect = bcdiv($image_size[0], $image_size[1], 12);
@@ -219,29 +234,22 @@ class ImageValidator extends Validator
 
 	}
 
-	/**
-	 * Build the error message for validation failures.
-	 *
-	 * @param  string $message
-	 * @param  string $attribute
-	 * @param  string $rule
-	 * @param  array $parameters
-	 * @return string
-	 */
-	public function replaceImageSize($message, $attribute, $rule, $parameters)
+	protected function getImagePath( $value )
 	{
 
-		$width = $height = $this->checkDimension( $parameters[0] );
-		if ( isset($parameters[1]) )
+		// if were passed an instance of UploadedFile, return the path
+		if ( $value instanceof UploadedFile )
 		{
-			$height = $this->checkDimension( $parameters[1] );
+			return $value->getPathname();
 		}
 
-		return str_replace(
-			array( ':width', ':height' ),
-			array( $width['message'], $height['message'] ),
-			$message
-		);
+		// if we're passed a PHP file upload array, return the "tmp_name"
+		if ( is_array($value) && array_get($value, 'tmp_name') !== null) {
+			return $value['tmp_name'];
+		}
+
+		// fallback: we were likely passed a path already
+		return $value;
 
 	}
 
