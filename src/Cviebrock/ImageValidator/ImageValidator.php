@@ -84,7 +84,7 @@ class ImageValidator extends Validator
 			$message = $this->translator->trans('image-validator::validation.between', compact('size1','size2'));
 			$pass = ($dimension >= $size1) && ($dimension <= $size2);
 		}
-		else if ( preg_match('/^([<=>\*]*)(\d+)(\-\d+)?$/', $rule, $matches) )
+		else if ( preg_match('/^([<=>]*)(\d+)$/', $rule, $matches) )
 		{
 
 			$size = intval($matches[2]);
