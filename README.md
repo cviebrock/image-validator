@@ -1,21 +1,9 @@
 # ImageSize Validator Rule For Laravel 4
 
-# NOTE - THIS DOESN'T WORK
+Extra Laravel validation rules for dealing with images.
 
-This branch uses a "better" service provider method that uses Validator::extend to
-add the new rules, instead of actually extending the base Laravel validator class.
-The problem is that this method doesn't allow for custom replacement rules.
-
-https://github.com/laravel/framework/issues/2963
-
-Hopefully, this will be added to Laravel core, at which point I'll update the code.
-Until then, I'm just saving this branch for that future date ...
-
-* * *
-
-
-
-This package allows you to validate images based on their dimensions.
+[![Latest Stable Version](https://poser.pugx.org/cviebrock/image-validator/v/stable.png)](https://packagist.org/packages/cviebrock/image-validator)
+[![Total Downloads](https://poser.pugx.org/cviebrock/image-validator/downloads.png)](https://packagist.org/packages/cviebrock/image-validator)
 
 * [Installation](#installation)
 * [Usage](#usage)

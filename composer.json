@@ -1,8 +1,8 @@
 {
-	"name": "cviebrock/imagesize-validator",
+	"name": "cviebrock/image-validator",
 	"description": "Custom Laravel 4 Validator for image dimensions",
 	"keywords": ["laravel","validator","image"],
-	"homepage": "https://github.com/cviebrock/imagesize-validator",
+	"homepage": "https://github.com/cviebrock/image-validator",
 	"license": "MIT",
 	"authors": [
 		{
@@ -21,7 +21,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"Cviebrock\\ImageSizeValidator": "src/"
+			"Cviebrock\\ImageValidator": "src/"
 		}
 	},
 	"minimum-stability": "dev"

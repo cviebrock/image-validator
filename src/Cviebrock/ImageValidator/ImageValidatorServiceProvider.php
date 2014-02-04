@@ -1,9 +1,9 @@
-<?php namespace Cviebrock\ImageSizeValidator;
+<?php namespace Cviebrock\ImageValidator;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Factory;
 
-class ImageSizeValidatorServiceProvider extends ServiceProvider
+class ImageValidatorServiceProvider extends ServiceProvider
 {
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -24,13 +24,13 @@ class ImageSizeValidatorServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->package('cviebrock/imagesize-validator');
+		$this->package('cviebrock/image-validator');
 
 		// $app = $this->app;
 
-		$this->app->bind('Cviebrock\ImageSizeValidator\ImageSizeValidator', function($app)
+		$this->app->bind('Cviebrock\ImageValidator\ImageValidator', function($app)
 		{
-			$validator = new ImageSizeValidator($app['translator'], array(), array(), $app['translator']->get('imagesize-validator::validation'));
+			$validator = new ImageValidator($app['translator'], array(), array(), $app['translator']->get('image-validator::validation'));
 
 			if (isset($app['validation.presence']))
 			{
@@ -75,8 +75,8 @@ class ImageSizeValidatorServiceProvider extends ServiceProvider
 	protected function extendValidator($rule)
 	{
 		$method = 'validate' . studly_case($rule);
-		$translation = $this->app['translator']->get('imagesize-validator::validation');
-		$this->app['validator']->extend($rule, 'Cviebrock\ImageSizeValidator\ImageSizeValidator@' . $method, $translation[$rule]);
+		$translation = $this->app['translator']->get('image-validator::validation');
+		$this->app['validator']->extend($rule, 'Cviebrock\ImageValidator\ImageValidator@' . $method, $translation[$rule]);
 	}
 
 
