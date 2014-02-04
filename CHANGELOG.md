@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.1 - 04-Feb-2014
+## v1.0.2 - 04-Feb-2014
 
 - Bug fixes.
 
