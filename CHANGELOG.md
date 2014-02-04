@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 1.0.1 - 04-Feb-2014
+
+- Bug fixes.
+
+
 ## Version 1.0.0 - 04-Feb-2014
 
 - Rename package to `cviebrock/image-validator`.
