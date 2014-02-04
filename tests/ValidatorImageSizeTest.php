@@ -1,6 +1,6 @@
 <?php
 
-use Cviebrock\ImageSizeValidator\ImageSizeValidator;
+use Cviebrock\ImageValidator\ImageValidator;
 
 class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesMatch()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:200,250' ),
@@ -42,7 +42,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesSquare()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:200' ),
@@ -55,7 +55,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesLessThan()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:<200,<250' ),
@@ -68,7 +68,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesLessThanEqual()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:<=200,<=250' ),
@@ -81,7 +81,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesGreaterThan()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:>200,>250' ),
@@ -94,7 +94,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesGreaterThanEqual()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:>=200,>=250' ),
@@ -107,7 +107,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesAnySize()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:*,250' ),
@@ -120,7 +120,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 	public function testValidatesRange()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_size:200-300' ),

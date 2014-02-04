@@ -1,5 +1,5 @@
 {
     "providers": [
-        "Cviebrock\\ImageSizeValidator\\ImageSizeValidatorServiceProvider"
+        "Cviebrock\\ImageValidator\\ImageValidatorServiceProvider"
     ]
 }

@@ -1,6 +1,10 @@
-# ImageSize Validator Rule For Laravel 4
+# Image Validator Rules For Laravel 4
 
-This package allows you to validate images based on their dimensions or aspect ratio.
+Extra Laravel validation rules for dealing with images.
+
+[![Latest Stable Version](https://poser.pugx.org/cviebrock/image-validator/v/stable.png)](https://packagist.org/packages/cviebrock/image-validator)
+[![Total Downloads](https://poser.pugx.org/cviebrock/image-validator/downloads.png)](https://packagist.org/packages/cviebrock/image-validator)
+
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -20,12 +24,14 @@ In your `composer.json` file:
 ```json
 {
 	"require": {
-		"laravel/framework": "4.1.*",
+		"laravel/framework": ">=4.1.21",
 		// ...
-		"cviebrock/imagesize-validator": "0.*"
+		"cviebrock/image-validator": "1.0.*"
 	}
 }
 ```
+
+**Note:** the minimum version of Laravel that's supported is 4.1.21.  This is when class-based replacers were introduced to the core, allowing packages to extend the validator with classes that also handle custom messages.
 
 Run `composer install` or `composer update` to install the package.
 
@@ -35,7 +41,7 @@ Add the following to your `providers` array in `app/config/app.php`:
 'providers' => array(
 	// ...
 
-	'Cviebrock\ImageSizeValidator\ImageSizeValidatorServiceProvider',
+	'Cviebrock\ImageValidator\ImageValidatorServiceProvider',
 ),
 ```
 
@@ -162,5 +168,4 @@ Copyright 2013 Colin Viebrock
 
 ## Thanks
 
-Lots of thanks to https://bitbucket.org/hampel/validate-laravel for the structure of creating a package
-to add validator rules to Laravel, and setting up useful unit tests.
+Lots of thanks to https://bitbucket.org/hampel/validate-laravel for the structure of creating a package to add validator rules to Laravel, and setting up useful unit tests.

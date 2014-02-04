@@ -21,7 +21,7 @@ class ValidateServiceProviderTest extends PHPUnit_Framework_TestCase {
 		$container->shouldReceive('offsetGet')->with('translator')->andReturn($translator);
 		$container->shouldReceive('offsetGet')->with('validator')->andReturn($factory);
 
-		$sp = Mockery::mock('Cviebrock\ImageSizeValidator\ImageSizeValidatorServiceProvider[package]', array($container));
+		$sp = Mockery::mock('Cviebrock\ImageValidator\ImageValidatorServiceProvider[package]', array($container));
 		$sp->shouldReceive('package');
 		$sp->boot();
 
@@ -30,7 +30,7 @@ class ValidateServiceProviderTest extends PHPUnit_Framework_TestCase {
 		foreach ($validator->getExtensions() as $rule => $class_and_method)
 		{
 			$this->assertTrue(in_array($rule, $sp->getRules()));
-			$this->assertEquals('Cviebrock\ImageSizeValidator\ImageSizeValidator@' . 'validate' . studly_case($rule), $class_and_method);
+			$this->assertEquals('Cviebrock\ImageValidator\ImageValidator@' . 'validate' . studly_case($rule), $class_and_method);
 
 			list($class, $method) = Str::parseCallback($class_and_method, null);
 
