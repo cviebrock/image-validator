@@ -1,6 +1,6 @@
 <?php
 
-use Cviebrock\ImageSizeValidator\ImageSizeValidator;
+use Cviebrock\ImageValidator\ImageValidator;
 
 class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 {
@@ -29,7 +29,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 	public function testValidatesAspect()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_aspect:4,5' ),
@@ -42,7 +42,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 	public function testValidatesAspectDecimal()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_aspect:0.8' ),
@@ -55,7 +55,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 	public function testValidatesReverseAspect()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_aspect:~5,4' ),
@@ -68,7 +68,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 	public function testValidatesReverseAspectDecimal()
 	{
 
-		$validator = new ImageSizeValidator(
+		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
 			array( 'image' => 'image_aspect:~1.25' ),
