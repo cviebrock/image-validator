@@ -6,7 +6,7 @@
  */
 
 return array(
-    'image_size'          => ':attribute :width genişliğinde :height yüksekliğinde olmalıdır.',
+    'image_size'          => ':attribute :width genişliğinde ve :height yüksekliğinde olmalıdır.',
 
     'between'            => ':size1 ve :size2 piksel aralığında',
     'lessthan'           => ':size pikselden daha az',
