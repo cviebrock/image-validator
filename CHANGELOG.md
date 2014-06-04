@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.3 - 04-Jun-2014
+
+- Added translations for Portuguese (thanks @helio-correia) and Turkish (thanks @Ardakilic).
+
+
 ## v1.0.2 - 04-Feb-2014
 
 - Bug fixes.
