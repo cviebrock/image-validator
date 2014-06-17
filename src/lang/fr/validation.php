@@ -5,7 +5,7 @@ return array(
 
   'between'            => 'entre :size1 et :size2 pixels',
   'lessthan'           => 'moins de :size pixels',
-  'lessthanorequal'    => 'plus ou moins égal à :size pixels',
+  'lessthanorequal'    => 'plus petit ou égal à :size pixels',
   'greaterthan'        => 'plus grand que :size pixels',
   'greaterthanorequal' => 'plus grand ou égal à :size pixels',
   'equal'              => ':size pixels',
