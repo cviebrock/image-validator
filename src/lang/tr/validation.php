@@ -16,5 +16,5 @@ return array(
     'equal'              => ':size piksel olmalıdır.',
     'anysize'            => 'herhangi bir boyda olmalıdır.',
 
-    'image_aspect'       => ':attribute resim ölçüsü :aspect olmalıdır.',
+    'image_aspect'       => ':attribute en/boy oranı :aspect olmalıdır.',
 );
