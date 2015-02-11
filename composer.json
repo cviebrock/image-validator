@@ -1,6 +1,6 @@
 {
 	"name": "cviebrock/image-validator",
-	"description": "Custom Laravel 5 Validator for image dimensions",
+	"description": "Custom Laravel Validator for image dimensions",
 	"keywords": ["laravel","validator","image"],
 	"homepage": "https://github.com/cviebrock/image-validator",
 	"license": "MIT",
