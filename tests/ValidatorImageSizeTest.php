@@ -2,12 +2,12 @@
 
 use Cviebrock\ImageValidator\ImageValidator;
 
+
 class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 {
 	protected $translator;
 	protected $data;
 	protected $rules;
-	protected $messages;
 
 
 	public function setUp()
@@ -19,12 +19,10 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		);
 	}
 
-
 	public function tearDown()
 	{
 		Mockery::close();
 	}
-
 
 	public function testValidatesMatch()
 	{
@@ -32,8 +30,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:200,250' ),
-			$this->messages
+			array( 'image' => 'image_size:200,250' )
 		);
 
 		$this->assertTrue($validator->passes());
@@ -45,8 +42,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:200' ),
-			$this->messages
+			array( 'image' => 'image_size:200' )
 		);
 
 		$this->assertTrue($validator->fails());
@@ -58,8 +54,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:<200,<250' ),
-			$this->messages
+			array( 'image' => 'image_size:<200,<250' )
 		);
 
 		$this->assertTrue($validator->fails());
@@ -71,8 +66,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:<=200,<=250' ),
-			$this->messages
+			array( 'image' => 'image_size:<=200,<=250' )
 		);
 
 		$this->assertTrue($validator->passes());
@@ -84,8 +78,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:>200,>250' ),
-			$this->messages
+			array( 'image' => 'image_size:>200,>250' )
 		);
 
 		$this->assertTrue($validator->fails());
@@ -97,8 +90,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:>=200,>=250' ),
-			$this->messages
+			array( 'image' => 'image_size:>=200,>=250' )
 		);
 
 		$this->assertTrue($validator->passes());
@@ -110,8 +102,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:*,250' ),
-			$this->messages
+			array( 'image' => 'image_size:*,250' )
 		);
 
 		$this->assertTrue($validator->passes());
@@ -123,8 +114,7 @@ class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_size:200-300' ),
-			$this->messages
+			array( 'image' => 'image_size:200-300' )
 		);
 
 		$this->assertTrue($validator->passes());

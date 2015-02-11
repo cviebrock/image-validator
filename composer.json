@@ -1,6 +1,6 @@
 {
 	"name": "cviebrock/image-validator",
-	"description": "Custom Laravel 4 Validator for image dimensions",
+	"description": "Custom Laravel 5 Validator for image dimensions",
 	"keywords": ["laravel","validator","image"],
 	"homepage": "https://github.com/cviebrock/image-validator",
 	"license": "MIT",
@@ -13,16 +13,18 @@
 	"require": {
 		"php": ">=5.4.0",
 		"ext-gd": "*",
-		"illuminate/support": ">=4.1.21",
-		"illuminate/validation": ">=4.1.21"
+		"illuminate/support": "5.*",
+		"illuminate/translation": "5.*",
+		"illuminate/validation": "5.*"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "3.7.*",
-		"mockery/mockery": "dev-master"
+		"phpunit/phpunit": "4.*",
+		"mockery/mockery": "dev-master",
+		"orchestra/testbench": "3.0.*"
 	},
 	"autoload": {
-		"psr-0": {
-			"Cviebrock\\ImageValidator": "src/"
+		"psr-4": {
+			"Cviebrock\\ImageValidator\\": "src/"
 		}
 	},
 	"minimum-stability": "dev",

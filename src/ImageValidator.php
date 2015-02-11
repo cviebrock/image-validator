@@ -2,16 +2,19 @@
 
 use Illuminate\Validation\Validator;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Translation\TranslatorInterface;
+use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 
-class ImageValidator extends Validator
+
+class ImageValidator extends Validator implements ValidatorContract
 {
 
 	/**
 	 * Creates a new instance of ImageValidator
 	 */
-	public function __construct($translator, $data, $rules, $messages)
+	public function __construct(TranslatorInterface $translator, array $data, array $rules, array $messages = [], array $customAttributes = [])
 	{
-		parent::__construct($translator, $data, $rules, $messages);
+		parent::__construct($translator, $data, $rules, $messages, $customAttributes);
 	}
 
 	/**

@@ -26,17 +26,11 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	*/
 	public function boot()
 	{
-		$app = $this->app;
-		$version = intval($app::VERSION);
-		if ($version == 4) {
-			$this->package('cviebrock/image-validator', 'image-validator');
-		} elseif ($version == 5) {
-			$this->loadTranslationsFrom(__DIR__.'/../../lang', 'image-validator');
-		}
+		$this->loadTranslationsFrom(__DIR__.'/../lang', 'image-validator');
 
 		$this->app->bind('Cviebrock\ImageValidator\ImageValidator', function($app)
 		{
-			$validator = new ImageValidator($app['translator'], array(), array(), $this->loadTranslator());
+			$validator = new ImageValidator($app['translator'], [], [], trans('image-validator::validation') );
 
 			if (isset($app['validation.presence']))
 			{
@@ -66,13 +60,7 @@ class ImageValidatorServiceProvider extends ServiceProvider
 		*/
 	protected function loadTranslator()
 	{
-		$app = $this->app;
-		$version = intval($app::VERSION);
-		if ($version == 4) {
-			return $app['translator']->get('image-validator::validation');
-		} elseif ($version == 5) {
-			return trans('image-validator::validation');
-		}
+		return trans('image-validator::validation');
 	}
 
 	/**
@@ -95,7 +83,7 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	protected function extendValidator($rule)
 	{
 		$method = studly_case($rule);
-		$translation = $this->loadTranslator();
+		$translation = trans('image-validator::validation');
 		$this->app['validator']->extend($rule, 'Cviebrock\ImageValidator\ImageValidator@validate' . $method, $translation[$rule]);
 		$this->app['validator']->replacer($rule, 'Cviebrock\ImageValidator\ImageValidator@replace' . $method );
 	}
@@ -118,7 +106,7 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	*/
 	public function provides()
 	{
-		return array();
+		return [];
 	}
 
 }

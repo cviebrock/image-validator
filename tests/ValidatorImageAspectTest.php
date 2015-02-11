@@ -2,12 +2,12 @@
 
 use Cviebrock\ImageValidator\ImageValidator;
 
+
 class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 {
 	protected $translator;
 	protected $data;
 	protected $rules;
-	protected $messages;
 
 
 	public function setUp()
@@ -19,12 +19,10 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 		);
 	}
 
-
 	public function tearDown()
 	{
 		Mockery::close();
 	}
-
 
 	public function testValidatesAspect()
 	{
@@ -32,8 +30,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_aspect:4,5' ),
-			$this->messages
+			array( 'image' => 'image_aspect:4,5' )
 		);
 
 		$this->assertTrue($validator->passes());
@@ -45,8 +42,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_aspect:0.8' ),
-			$this->messages
+			array( 'image' => 'image_aspect:0.8' )
 		);
 
 		$this->assertTrue($validator->passes());
@@ -58,8 +54,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_aspect:~5,4' ),
-			$this->messages
+			array( 'image' => 'image_aspect:~5,4' )
 		);
 
 		$this->assertTrue($validator->passes());
@@ -71,8 +66,7 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 		$validator = new ImageValidator(
 			$this->translator,
 			$this->data,
-			array( 'image' => 'image_aspect:~1.25' ),
-			$this->messages
+			array( 'image' => 'image_aspect:~1.25' )
 		);
 
 		$this->assertTrue($validator->passes());
