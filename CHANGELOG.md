@@ -1,9 +1,15 @@
 # Changelog
 
-## v1.0.x - xx-xxx-2014
+## v2.0.0-alpha - 11-Feb-2015
+
+- Laravel 5 alpha version.
+
+
+## v1.0.5 - 11-Feb-2015
 
 - Fixed Turkish translation (#7, thanks @mayoz).
- 
+- Last version that works with Laravel 4.
+
 
 ## v1.0.4 - 17-Jun-2014
 

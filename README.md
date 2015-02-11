@@ -1,4 +1,4 @@
-# Image Validator Rules For Laravel 4
+# Image Validator Rules For Laravel 5
 
 Extra Laravel validation rules for dealing with images.
 
@@ -19,28 +19,16 @@ Extra Laravel validation rules for dealing with images.
 
 Install the package through [Composer](http://getcomposer.org).
 
-In your `composer.json` file:
-
-```json
-{
-	"require": {
-		"laravel/framework": ">=4.1.21",
-		// ...
-		"cviebrock/image-validator": "1.0.*"
-	}
-}
+```
+composer require "cviebrock/image-validator:2.0.*"
 ```
 
-**Note:** the minimum version of Laravel that's supported is 4.1.21.  This is when class-based replacers were introduced to the core, allowing packages to extend the validator with classes that also handle custom messages.
-
-Run `composer install` or `composer update` to install the package.
+**Note:** Version 2.0 of this package is designed to work with Laravel 5.  If you are using Laravel 4, then checkout the `1.x` branch and use the latest version there.
 
 Add the following to your `providers` array in `app/config/app.php`:
 
 ```php
 'providers' => array(
-	// ...
-
 	'Cviebrock\ImageValidator\ImageValidatorServiceProvider',
 ),
 ```
@@ -142,18 +130,18 @@ Note that you may run into issues with floating point rounding.
 <a name="bugs"></a>
 ## Bugs, Suggestions and Contributions
 
-Please use Github for bugs, comments, suggestions.
+Please use [Github](https://github.com/cviebrock/image-validator/issues) for bugs, comments, suggestions.
 
 1. Fork the project.
 2. Create your bugfix/feature branch and write your code.
 3. Create unit tests for your code:
 	- Run `composer install --dev` in the root directory to install required testing packages.
-	- Add your test methods to `tests/ValidatorTest.php`.
-	- Run `vendor/bin/phpunit` to the new (and all previous) tests and make sure everything passes.
+	- Add your test methods to `tests/` (either adding to an existing test file, or creating a new one).
+	- Run `vendor/bin/phpunit` to confirm the new (and all previous) tests pass.
 3. Commit your changes (and your tests) and push to your branch.
-4. Create a new pull request against the imagesize-validator `develop` branch.
+4. Create a new pull request against the imagesize-validator `master` branch.
 
-**Please note that you must create your pull request against the `develop` branch.**
+**Please note that you must create your pull request against the `master` branch.  If you have a fix for the Laravel 4 version of the package, make your pull request against the `1.x` branch.**
 
 
 
