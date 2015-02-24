@@ -5,9 +5,9 @@ return array(
 
 	'between'            => 'tussen :size1 en :size2 pixels',
 	'lessthan'           => 'kleiner dan :size pixels',
-	'lessthanorequal'    => 'kleiner dan of gelijk aan :size pixels',
+	'lessthanorequal'    => 'maximaal :size pixels',
 	'greaterthan'        => 'groter dan :size pixels',
-	'greaterthanorequal' => 'groter dan of gelijk aan :size pixels',
+	'greaterthanorequal' => 'minimaal :size pixels',
 	'equal'              => ':size pixels',
 	'anysize'            => 'elke grootte',
 
