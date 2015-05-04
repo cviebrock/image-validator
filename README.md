@@ -20,7 +20,7 @@ Extra Laravel validation rules for dealing with images.
 Install the package through [Composer](http://getcomposer.org).
 
 ```
-composer require "cviebrock/image-validator:2.0.*@alpha"
+composer require "cviebrock/image-validator:2.0.*@beta"
 ```
 
 **Note:** Version 2.0 of this package is designed to work with Laravel 5.  If you are using Laravel 4, then checkout the `1.x` branch and use the latest version there.
