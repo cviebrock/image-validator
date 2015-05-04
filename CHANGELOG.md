@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.0-beta - 02-Mar-2015
+
+- Laravel 5 release version.
+- German and Dutch translations (#18 and #19, thanks @gpluess).
+
+
 ## v2.0.0-alpha - 11-Feb-2015
 
 - Laravel 5 alpha version.
