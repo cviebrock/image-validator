@@ -1,20 +1,15 @@
 <?php
 
-/**
- * @author Arda Kılıçdağı
- * @web http://arda.pw
- */
-
 return array(
-    'image_size'          => ':attribute :width genişliğinde ve :height yüksekliğinde olmalıdır.',
+    'image_size'          => ':attribute :width genişliği ve :height yüksekliği olmalıdır.',
 
-    'between'            => ':size1 ve :size2 piksel aralığında olmalıdır.',
-    'lessthan'           => ':size pikselden daha az olmalıdır.',
-    'lessthanorequal'    => ':size piksele eşit veya daha az olmalıdır.',
-    'greaterthan'        => ':size pikselden daha fazla olmalıdır.',
-    'greaterthanorequal' => ':size piksele eşit veya daha fazla olmalıdır.',
-    'equal'              => ':size piksel olmalıdır.',
-    'anysize'            => 'herhangi bir boyda olmalıdır.',
+    'between'            => ':size1 ve :size2 piksel aralığında',
+    'lessthan'           => ':size pikselden az',
+    'lessthanorequal'    => ':size piksele eşit veya az',
+    'greaterthan'        => ':size pikselden fazla',
+    'greaterthanorequal' => ':size piksele eşit veya fazla',
+    'equal'              => ':size piksel',
+    'anysize'            => 'herhangi bir',
 
     'image_aspect'       => ':attribute en/boy oranı :aspect olmalıdır.',
 );
