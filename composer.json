@@ -13,6 +13,7 @@
 	"require": {
 		"php": ">=5.4.0",
 		"ext-gd": "*",
+		"ext-bcmath": "*",
 		"illuminate/support": "5.*",
 		"illuminate/translation": "5.*",
 		"illuminate/validation": "5.*"
