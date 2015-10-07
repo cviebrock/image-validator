@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.0 - 07-Oct-2015
+
+- Russian translation (#29, thanks @DexinDev).
+
+
 ## v2.0.0-beta - 02-Mar-2015
 
 - Laravel 5 release version.
