@@ -17,6 +17,10 @@ class ImageValidatorServiceProvider extends ServiceProvider
 		'image_size',
 		'image_aspect',
 	);
+        
+        protected $translationLocation = 'image-validator';
+
+        protected $translationLocationExtra = '::validation';
 
 
 	/**
@@ -26,11 +30,15 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	*/
 	public function boot()
 	{
-		$this->loadTranslationsFrom(__DIR__.'/../lang', 'image-validator');
+                $translationCheck = trans($this->translationLocation);
+                if(!is_array($translationCheck)) {
+                    $this->loadTranslationsFrom(__DIR__.'/../lang', $this->translationLocation);
+                    $this->translationLocation = $this->translationLocation . $this->translationLocationExtra;
+                }
 
 		$this->app->bind('Cviebrock\ImageValidator\ImageValidator', function($app)
 		{
-			$validator = new ImageValidator($app['translator'], [], [], trans('image-validator::validation') );
+			$validator = new ImageValidator($app['translator'], [], [], trans($this->translationLocation), array(), $this->translationLocation );
 
 			if (isset($app['validation.presence']))
 			{
@@ -60,7 +68,7 @@ class ImageValidatorServiceProvider extends ServiceProvider
 		*/
 	protected function loadTranslator()
 	{
-		return trans('image-validator::validation');
+		return trans($this->translationLocation);
 	}
 
 	/**
@@ -83,7 +91,7 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	protected function extendValidator($rule)
 	{
 		$method = studly_case($rule);
-		$translation = trans('image-validator::validation');
+		$translation = trans($this->translationLocation);
 		$this->app['validator']->extend($rule, 'Cviebrock\ImageValidator\ImageValidator@validate' . $method, $translation[$rule]);
 		$this->app['validator']->replacer($rule, 'Cviebrock\ImageValidator\ImageValidator@replace' . $method );
 	}

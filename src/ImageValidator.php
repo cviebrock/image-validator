@@ -9,12 +9,15 @@ use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 class ImageValidator extends Validator implements ValidatorContract
 {
 
+        protected $translationLocation = 'image-validator::validation';
+        
 	/**
 	 * Creates a new instance of ImageValidator
 	 */
-	public function __construct(TranslatorInterface $translator, array $data, array $rules, array $messages = [], array $customAttributes = [])
+	public function __construct(TranslatorInterface $translator, array $data, array $rules, array $messages = [], array $customAttributes = [], $translationLocation = null)
 	{
 		parent::__construct($translator, $data, $rules, $messages, $customAttributes);
+                if(!empty($translationLocation)) $this->translationLocation = $translationLocation;
 	}
 
 	/**
@@ -185,14 +188,14 @@ class ImageValidator extends Validator implements ValidatorContract
 
 		if ($rule == '*')
 		{
-			$message = $this->translator->trans('image-validator::validation.anysize');
+			$message = $this->translator->trans($this->translationLocation . '.anysize');
 			$pass = true;
 		}
 		else if ( preg_match('/^(\d+)\-(\d+)$/', $rule, $matches) )
 		{
 			$size1 = intval($matches[1]);
 			$size2 = intval($matches[2]);
-			$message = $this->translator->trans('image-validator::validation.between', compact('size1','size2'));
+			$message = $this->translator->trans($this->translationLocation . '.between', compact('size1','size2'));
 			$pass = ($dimension >= $size1) && ($dimension <= $size2);
 		}
 		else if ( preg_match('/^([<=>]*)(\d+)$/', $rule, $matches) )
@@ -203,24 +206,24 @@ class ImageValidator extends Validator implements ValidatorContract
 			switch ($matches[1])
 			{
 				case '>':
-					$message = $this->translator->trans('image-validator::validation.greaterthan', compact('size'));
+					$message = $this->translator->trans( $this->translationLocation . '.greaterthan', compact('size'));
 					$pass = $dimension > $size;
 					break;
 				case '>=':
-					$message = $this->translator->trans('image-validator::validation.greaterthanorequal', compact('size'));
+					$message = $this->translator->trans($this->translationLocation . '.greaterthanorequal', compact('size'));
 					$pass = $dimension >= $size;
 					break;
 				case '<':
-					$message = $this->translator->trans('image-validator::validation.lessthan', compact('size'));
+					$message = $this->translator->trans($this->translationLocation . '.lessthan', compact('size'));
 					$pass = $dimension < $size;
 					break;
 				case '<=':
-					$message = $this->translator->trans('image-validator::validation.lessthanorequal', compact('size'));
+					$message = $this->translator->trans($this->translationLocation . '.lessthanorequal', compact('size'));
 					$pass = $dimension <= $size;
 					break;
 				case '=':
 				case '':
-					$message = $this->translator->trans('image-validator::validation.equal', compact('size'));
+					$message = $this->translator->trans($this->translationLocation . '.equal', compact('size'));
 					$pass = $dimension == $size;
 					break;
 				default:
