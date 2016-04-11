@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.1 - 11-Apr-2016
+
+- Spanish translation (#32, thanks @keyduq).
+- French translation fixes (#39, thanks @DevJuju).
+
+
 ## v2.0.0 - 07-Oct-2015
 
 - Russian translation (#29, thanks @DexinDev).
