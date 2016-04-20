@@ -119,7 +119,7 @@ Note that you may run into issues with floating point rounding.
 	// logo must be ready for the big screen TV :)
 
 	$rules = array(
-		'logo' => 'required|image|image_aspect:16:9',
+		'logo' => 'required|image|image_aspect:16,9',
 	);
 
 
