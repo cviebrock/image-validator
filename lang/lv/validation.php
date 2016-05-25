@@ -1,15 +1,15 @@
-<?php
+ï»¿<?php
 
 return array(
-	'image_size'          => ':attribute jâbût :width platam un :height augstam.',
+	'image_size'          => ':attribute jÄbÅ«t :width platam un :height augstam.',
 
-	'between'            => 'starp :size1 un :size2 pikseïiem(i)',
-	'lessthan'           => 'mazâkam par :size pikseïiem(i)',
-	'lessthanorequal'    => 'mazâkam vai vienâdam par :size pikseïiem(i)',
-	'greaterthan'        => 'lielâkam par :size pikseïiem(i)',
-	'greaterthanorequal' => 'lielâkam vai vienâdam par :size pikseïiem(i)',
-	'equal'              => ':size pikseïus(i)',
-	'anysize'            => 'jebkura izmçra',
+	'between'            => 'starp :size1 un :size2 pikseÄ¼iem(i)',
+	'lessthan'           => 'mazÄkam par :size pikseÄ¼iem(i)',
+	'lessthanorequal'    => 'mazÄkam vai vienÄdam par :size pikseÄ¼iem(i)',
+	'greaterthan'        => 'lielÄkam par :size pikseÄ¼iem(i)',
+	'greaterthanorequal' => 'lielÄkam vai vienÄdam par :size pikseÄ¼iem(i)',
+	'equal'              => ':size pikseÄ¼us(i)',
+	'anysize'            => 'jebkura izmÄ“ra',
 
-	'image_aspect'       => ':attribute malu attiecîbai jâbût :aspect.',
+	'image_aspect'       => ':attribute malu attiecÄ«bai jÄbÅ«t :aspect.',
 );
