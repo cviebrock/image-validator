@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.x.x - xx-xxx-2016
+
+- Latvian translation (#42, thanks @scvaer)
+
+
 ## v2.0.1 - 11-Apr-2016
 
 - Spanish translation (#32, thanks @keyduq).
