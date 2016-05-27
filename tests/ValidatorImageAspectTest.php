@@ -72,4 +72,23 @@ class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 		$this->assertTrue($validator->passes());
 	}
 
+	public function testRoundingAspects()
+	{
+		$validator = new ImageValidator(
+			$this->translator,
+			array('image' => dirname(__FILE__) . '/images/1024x682.png'),
+			array('image' => 'image_aspect:3,2')
+		);
+
+		$this->assertFalse($validator->passes());
+
+		$validator = new ImageValidator(
+			$this->translator,
+			array('image' => dirname(__FILE__) . '/images/1024x683.png'),
+			array('image' => 'image_aspect:3,2')
+		);
+
+		$this->assertTrue($validator->passes());
+	}
+
 }

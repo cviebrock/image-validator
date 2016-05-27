@@ -102,7 +102,8 @@ class ImageValidator extends Validator implements ValidatorContract
 		$image_size = @getimagesize( $image );
 		if ($image_size===false) return false;
 
-		$image_aspect = bcdiv($image_size[0], $image_size[1], 12);
+		$image_width = $image_size[0];
+		$image_height = $image_size[1];
 
 
 		// Parse the parameter(s).  Options are:
@@ -124,28 +125,28 @@ class ImageValidator extends Validator implements ValidatorContract
 
 		if (count($parameters)==1)
 		{
-			$aspect = $parameters[0];
+			$aspect_width = $parameters[0];
+			$aspect_height = 1;
+		} else {
+			$aspect_width = intval($parameters[0]);
+			$aspect_height = intval($parameters[1]);
 		}
-		else
+
+		if ($aspect_width==0 || $aspect_height==0)
 		{
-			$width  = intval($parameters[0]);
-			$height = intval($parameters[1]);
-
-			if ($height==0 || $width==0)
-			{
-				throw new \RuntimeException('Aspect is zero or infinite: ' . $parameters[0] );
-			}
-			$aspect = bcdiv($width, $height, 12);
+			throw new \RuntimeException('Aspect is zero or infinite: ' . $parameters[0] );
 		}
 
-		if ( bccomp($aspect, $image_aspect, 10) == 0 )
+		$check = ($image_width * $aspect_height) / $aspect_width;
+
+		if (round($check) == $image_height)
 		{
 			return true;
 		}
 
 		if ( $both_orientations ) {
-			$inverse = bcdiv(1, $aspect, 12);
-			if ( bccomp($inverse, $image_aspect, 10)==0 )
+			$check = ($image_width * $aspect_width) / $aspect_height;
+			if (round($check) == $image_height)
 			{
 				return true;
 			}
