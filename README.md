@@ -148,7 +148,7 @@ Please use [Github](https://github.com/cviebrock/image-validator/issues) for bug
 <a name="copyright"></a>
 ## Copyright and License
 
-Eloquent-Sluggable was written by Colin Viebrock and released under the MIT License. See the LICENSE file for details.
+Image-Validator was written by Colin Viebrock and released under the MIT License. See the LICENSE file for details.
 
 Copyright 2013 Colin Viebrock
 
