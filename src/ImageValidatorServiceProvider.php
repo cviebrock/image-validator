@@ -75,8 +75,8 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	protected function extendValidator($rule)
 	{
 		$method = studly_case($rule);
-		$translation = $this->app['translator']->trans('image-validator::validation');
-		$this->app['validator']->extend($rule, 'Cviebrock\ImageValidator\ImageValidator@validate' . $method, $translation[$rule]);
+		$translation = $this->app['translator']->trans('image-validator::validation.'.$rule);
+		$this->app['validator']->extend($rule, 'Cviebrock\ImageValidator\ImageValidator@validate' . $method, $translation);
 		$this->app['validator']->replacer($rule, 'Cviebrock\ImageValidator\ImageValidator@replace' . $method );
 	}
 
