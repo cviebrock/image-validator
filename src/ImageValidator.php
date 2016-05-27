@@ -167,7 +167,7 @@ class ImageValidator extends Validator implements ValidatorContract
 	 */
 	public function replaceImageAspect($message, $attribute, $rule, $parameters)
 	{
-		return str_replace( ':aspect', $parameters[0], $message );
+		return str_replace( ':aspect', join(':', $parameters), $message );
 	}
 
 
