@@ -30,7 +30,8 @@ class ImageValidatorServiceProvider extends ServiceProvider
 
 		$this->app->bind('Cviebrock\ImageValidator\ImageValidator', function($app)
 		{
-			$validator = new ImageValidator($app['translator'], [], [], trans('image-validator::validation') );
+			$messages = $app['translator']->trans('image-validator::validation');
+			$validator = new ImageValidator($app['translator'], [], [], $messages );
 
 			if (isset($app['validation.presence']))
 			{
@@ -52,15 +53,6 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	public function getRules()
 	{
 		return $this->rules;
-	}
-
-	/**
-	* Returns the translation string depending on laravel version
-	* @return string
-		*/
-	protected function loadTranslator()
-	{
-		return trans('image-validator::validation');
 	}
 
 	/**
