@@ -27,10 +27,11 @@ class ImageValidatorServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->loadTranslationsFrom(__DIR__.'/../lang', 'image-validator');
+		
+		$messages = trans('image-validator::validation');
 
-		$this->app->bind('Cviebrock\ImageValidator\ImageValidator', function($app)
+		$this->app->bind('Cviebrock\ImageValidator\ImageValidator', function($app) use ($messages)
 		{
-			$messages = $app['translator']->trans('image-validator::validation');
 			$validator = new ImageValidator($app['translator'], [], [], $messages );
 
 			if (isset($app['validation.presence']))
