@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1.1 - 19-Jul-2016
+
+- Fix for translations not loading in closure (#45, thanks @nWidart)
+
+
 ## v2.1.0 - 27-May-2016
 
 - Latvian translation (#42, thanks @scvaer)
