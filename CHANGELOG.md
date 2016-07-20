@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1.2 - 20-Jul-2016
+
+- Chinese-Traditional translation (#47, thanks @CaraWang)
+
+
 ## v2.1.1 - 19-Jul-2016
 
 - Fix for translations not loading in closure (#45, thanks @nWidart)
