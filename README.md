@@ -1,36 +1,41 @@
-# Image Validator Rules For Laravel 5
+# Image-Validator
 
-Extra Laravel validation rules for dealing with images.
+Extra validation rules for dealing with images in Laravel 5.
 
-[![Latest Stable Version](https://poser.pugx.org/cviebrock/image-validator/v/stable.png)](https://packagist.org/packages/cviebrock/image-validator)
-[![Total Downloads](https://poser.pugx.org/cviebrock/image-validator/downloads.png)](https://packagist.org/packages/cviebrock/image-validator)
+[![Latest Version](https://img.shields.io/packagist/v/cviebrock/image-validator.svg?style=flat-square)](https://github.com/cviebrock/eloquent-taggable/releases)
+[![Total Downloads](https://img.shields.io/packagist/dt/cviebrock/image-validator.svg?style=flat-square)](https://packagist.org/packages/cviebrock/eloquent-taggable)
+[![Build Status](https://img.shields.io/travis/cviebrock/image-validator/master.svg?style=flat-square)](https://travis-ci.org/cviebrock/eloquent-taggable)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/9e1bb86e-2659-4123-9b6f-89370ef1483d.svg?style=flat-square)](https://insight.sensiolabs.com/projects/9e1bb86e-2659-4123-9b6f-89370ef1483d)
+[![Quality Score](https://img.shields.io/scrutinizer/g/cviebrock/image-validator.svg?style=flat-square)](https://scrutinizer-ci.com/g/cviebrock/eloquent-taggable)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 
 * [Installation](#installation)
 * [Usage](#usage)
 * [Examples](#examples)
-* [Bugs, Suggestions and Contributions](#bugs)
-* [Copyright and License](#copyright)
+* [Bugs, Suggestions and Contributions](#bugs-suggestions-and-contributions)
+* [Copyright and License](#copyright-and-license)
 
+> *NOTE:* Version 2.x of this package is designed to work with Laravel 5.  If you are using Laravel 4, then checkout the `1.x` branch and use the latest version there.
 
+---
 
 <a name="installation"></a>
 ## Installation
 
 Install the package through [Composer](http://getcomposer.org).
 
-```
+```shell
 composer require "cviebrock/image-validator:^2.1"
 ```
-
-**Note:** Version 2.x of this package is designed to work with Laravel 5.  If you are using Laravel 4, then checkout the `1.x` branch and use the latest version there.
 
 Add the following to your `providers` array in `app/config/app.php`:
 
 ```php
-'providers' => array(
-	'Cviebrock\ImageValidator\ImageValidatorServiceProvider',
-),
+'providers' => [
+    ...
+    \Cviebrock\ImageValidator\ImageValidatorServiceProvider::class,
+],
 ```
 
 
@@ -38,14 +43,14 @@ Add the following to your `providers` array in `app/config/app.php`:
 <a name="usage"></a>
 ## Usage
 
+Use it like any `Validator` rule.  The package offers two rules for image validation:
+
 ### image_size
 
-Use it like any `Validator` rule:
-
 ```php
-$rules = array(
-	'my_image_field' => 'image_size:<width>[,<height>]',
-);
+$rules = [
+    'my_image_field' => 'image_size:<width>[,<height>]',
+];
 ```
 
 The values for _width_ and _height can be integers, or integers with a modifier prefix:
@@ -63,9 +68,9 @@ If you only pass one value, it's assumed to apply to both dimensions (i.e. a squ
 ### image_aspect
 
 ```php
-$rules = array(
-	'my_image_field' => 'image_aspect:<ratio>',
-);
+$rules = [
+    'my_image_field' => 'image_aspect:<ratio>',
+];
 ```
 
 The value for _ratio_ represents _width ÷ height_ and be either a decimal or two values (width, height; both integers):
@@ -74,7 +79,7 @@ The value for _ratio_ represents _width ÷ height_ and be either a decimal or tw
 - `3,4`
 
 The value (or first value, if providing height and width) can also be prefixed with a tilde `~` character,
-in which case the orientation doesn't matter:
+in which case the orientation does not matter:
 
 - `~3,4` means the image can have an aspect ratio of either 3:4 or 4:3.
 
@@ -85,70 +90,56 @@ Note that you may run into issues with floating point rounding.
 ## Examples
 
 ```php
+// logo must be 300px wide by 400px tall
+$rules = [
+    'logo' => 'required|image|image_size:300,400',
+];
 
-	// logo must be 300px wide by 400px tall
+// logo must be less than or equal to 300x300px.
+$rules = [
+    'logo' => 'required|image|image_size:<=300',
+];
 
-	$rules = array(
-		'logo' => 'required|image|image_size:300,400',
-	);
+// logo must be 300px wide but can be any height
+$rules = [
+    'logo' => 'required|image|image_size:300,*',
+];
 
-	// logo must be less than or equal to 300x300px.
+// logo must be at least 100px tall and 200-300 pixels wide (inclusive)
+$rules = [
+    'logo' => 'required|image|image_size:>=100,200-300',
+];
 
-	$rules = array(
-		'logo' => 'required|image|image_size:<=300',
-	);
+// logo must be square
+$rules = [
+    'logo' => 'required|image|image_aspect:1',
+];
 
-	// logo must be 300px wide but can be any height
-
-	$rules = array(
-		'logo' => 'required|image|image_size:300,*',
-	);
-
-	// logo must be at least 100px tall and 200-300 pixels wide (inclusive)
-
-	$rules = array(
-		'logo' => 'required|image|image_size:>=100,200-300',
-	);
-
-	// logo must be square
-
-	$rules = array(
-		'logo' => 'required|image|image_aspect:1',
-	);
-
-	// logo must be ready for the big screen TV :)
-
-	$rules = array(
-		'logo' => 'required|image|image_aspect:16,9',
-	);
-
-
+// logo must be ready for the big screen TV :)
+$rules = [
+    'logo' => 'required|image|image_aspect:16,9',
+];
 ```
 
 
 
-<a name="bugs"></a>
 ## Bugs, Suggestions and Contributions
 
-Please use [Github](https://github.com/cviebrock/image-validator/issues) for bugs, comments, suggestions.
+Thanks to [everyone](https://github.com/cviebrock/image-validator/graphs/contributors)
+who has contributed to this project!
 
-1. Fork the project.
-2. Create your bugfix/feature branch and write your code.
-3. Create unit tests for your code:
-	- Run `composer install --dev` in the root directory to install required testing packages.
-	- Add your test methods to `tests/` (either adding to an existing test file, or creating a new one).
-	- Run `vendor/bin/phpunit` to confirm the new (and all previous) tests pass.
-3. Commit your changes (and your tests) and push to your branch.
-4. Create a new pull request against the imagesize-validator `master` branch.
-
-**Please note that you must create your pull request against the `master` branch.  If you have a fix for the Laravel 4 version of the package, make your pull request against the `1.x` branch.**
+Please use [Github](https://github.com/cviebrock/image-validator) for reporting bugs, 
+and making comments or suggestions.
+ 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute changes.
 
 
 
-<a name="copyright"></a>
 ## Copyright and License
 
-Image-Validator was written by Colin Viebrock and released under the MIT License. See the LICENSE file for details.
+[image-validator](https://github.com/cviebrock/image-validator)
+was written by [Colin Viebrock](http://viebrock.ca) and is released under the 
+[MIT License](LICENSE.md).
 
 Copyright 2013 Colin Viebrock
 

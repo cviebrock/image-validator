@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1.3 - 12-Aug-2016
+
+- Chinese-Simplified translation (#48, thanks @php-cpm)
+
+
 ## v2.1.2 - 20-Jul-2016
 
 - Chinese-Traditional translation (#47, thanks @CaraWang)
