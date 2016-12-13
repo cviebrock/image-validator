@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.4 - 13-Dec-2016
+
+- Serbian (Latin) translation (#49, thanks @Shonetow)
+- Persian translation (#50, thanks @smart-twists)
+
+
 ## v2.1.3 - 12-Aug-2016
 
 - Chinese-Simplified translation (#48, thanks @php-cpm)
