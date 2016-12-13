@@ -11,5 +11,5 @@ return array(
 	'equal'              => ':size پیکسل',
 	'anysize'            => 'هر اندازه ای',
 
-	'image_aspect'       => ':attribute تناسب طول عرص برابر :aspect باید باشد.',
+	'image_aspect'       => ':attribute تناسب طول و عرض برابر :aspect باید باشد.',
 );
