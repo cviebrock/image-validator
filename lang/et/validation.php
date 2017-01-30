@@ -2,7 +2,7 @@
 
 return [
     'image_size' => 'Pilt peab olema :width laiust ja :height kõrgust.',
-    'between' => 'between :size1 and :size2 pixels',
+    'between' => ':size1 ja :size2 piksli vahel',
     'lessthan' => 'vähem, kui :size pikslit',
     'lessthanorequal' => 'väiksem või võrdne :size pikslit',
     'greaterthan' => 'suurem, kui :size pikslit',
