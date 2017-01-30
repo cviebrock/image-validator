@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.5 - 30-Jan-2017
+
+- Correction to Persian (#51, thanks @smart-twists)
+- Estonian translation (#52, thanks @kaidoj)
+ 
+
 ## v2.1.4 - 13-Dec-2016
 
 - Serbian (Latin) translation (#49, thanks @Shonetow)

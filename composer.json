@@ -1,31 +1,35 @@
 {
-	"name": "cviebrock/image-validator",
-	"description": "Custom Laravel Validator for image dimensions",
-	"keywords": ["laravel","validator","image"],
-	"homepage": "https://github.com/cviebrock/image-validator",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Colin Viebrock",
-			"email": "colin@viebrock.ca"
-		}
-	],
-	"require": {
-		"php": ">=5.4.0",
-		"illuminate/support": "5.*",
-		"illuminate/translation": "5.*",
-		"illuminate/validation": "5.*"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "4.*",
-		"mockery/mockery": "dev-master",
-		"orchestra/testbench": "3.0.*"
-	},
-	"autoload": {
-		"psr-4": {
-			"Cviebrock\\ImageValidator\\": "src/"
-		}
-	},
-	"minimum-stability": "dev",
+  "name": "cviebrock/image-validator",
+  "description": "Custom Laravel Validator for image dimensions",
+  "keywords": [
+    "laravel",
+    "validator",
+    "image"
+  ],
+  "homepage": "https://github.com/cviebrock/image-validator",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Colin Viebrock",
+      "email": "colin@viebrock.ca"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "5.*",
+    "illuminate/translation": "5.*",
+    "illuminate/validation": "5.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*",
+    "mockery/mockery": "dev-master",
+    "orchestra/testbench": "3.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Cviebrock\\ImageValidator\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
   "prefer-stable": true
 }
