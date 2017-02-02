@@ -1,7 +1,7 @@
 <?php
 
-return array(
-    'image_size'          => ':attribute :width genişliği ve :height yüksekliği olmalıdır.',
+return [
+    'image_size' => ':attribute :width genişliği ve :height yüksekliği olmalıdır.',
 
     'between'            => ':size1 ve :size2 piksel aralığında',
     'lessthan'           => ':size pikselden az',
@@ -11,5 +11,5 @@ return array(
     'equal'              => ':size piksel',
     'anysize'            => 'herhangi bir',
 
-    'image_aspect'       => ':attribute en/boy oranı :aspect olmalıdır.',
-);
+    'image_aspect' => ':attribute en/boy oranı :aspect olmalıdır.',
+];

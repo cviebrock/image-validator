@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     'image_size'         => ':attribute mora biti :width u širini i :height u visini.',
     'between'            => 'između :size1 i :size2 px',
     'lessthan'           => 'manja od :size px',
@@ -10,4 +10,4 @@ return array(
     'equal'              => ':size px',
     'anysize'            => 'bilo kojih dimenzija',
     'image_aspect'       => ':attribute mora da bude u proporciji :aspect.',
-);
+];
