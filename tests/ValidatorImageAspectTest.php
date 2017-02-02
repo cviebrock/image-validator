@@ -1,94 +1,94 @@
-<?php
+<?php namespace Cviebrock\ImageValidator\Test;
 
 use Cviebrock\ImageValidator\ImageValidator;
+use Illuminate\Contracts\Translation\Translator;
+use Mockery;
+use PHPUnit_Framework_TestCase;
 
 
 class ValidatorImageAspectTest extends PHPUnit_Framework_TestCase
 {
-	protected $translator;
-	protected $data;
-	protected $rules;
 
+    protected $translator;
 
-	public function setUp()
-	{
-		$this->translator = Mockery::mock('Symfony\Component\Translation\TranslatorInterface');
-		$this->translator->shouldReceive('trans');
-		$this->data = array(
-			'image' => dirname(__FILE__) . '/images/200x250.png'
-		);
-	}
+    protected $data;
 
-	public function tearDown()
-	{
-		Mockery::close();
-	}
+    protected $rules;
 
-	public function testValidatesAspect()
-	{
+    public function setUp()
+    {
+        $this->translator = Mockery::mock(Translator::class);
+        $this->translator->shouldReceive('trans');
+        $this->data = [
+            'image' => __DIR__ . '/images/200x250.png',
+        ];
+    }
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_aspect:4,5' )
-		);
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-		$this->assertTrue($validator->passes());
-	}
+    public function testValidatesAspect()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_aspect:4,5']
+        );
 
-	public function testValidatesAspectDecimal()
-	{
+        $this->assertTrue($validator->passes());
+    }
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_aspect:0.8' )
-		);
+    public function testValidatesAspectDecimal()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_aspect:0.8']
+        );
 
-		$this->assertTrue($validator->passes());
-	}
+        $this->assertTrue($validator->passes());
+    }
 
-	public function testValidatesReverseAspect()
-	{
+    public function testValidatesReverseAspect()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_aspect:~5,4']
+        );
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_aspect:~5,4' )
-		);
+        $this->assertTrue($validator->passes());
+    }
 
-		$this->assertTrue($validator->passes());
-	}
+    public function testValidatesReverseAspectDecimal()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_aspect:~1.25']
+        );
 
-	public function testValidatesReverseAspectDecimal()
-	{
+        $this->assertTrue($validator->passes());
+    }
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_aspect:~1.25' )
-		);
+    public function testRoundingAspects()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            ['image' => __DIR__ . '/images/1024x682.png'],
+            ['image' => 'image_aspect:3,2']
+        );
 
-		$this->assertTrue($validator->passes());
-	}
+        $this->assertFalse($validator->passes());
 
-	public function testRoundingAspects()
-	{
-		$validator = new ImageValidator(
-			$this->translator,
-			array('image' => dirname(__FILE__) . '/images/1024x682.png'),
-			array('image' => 'image_aspect:3,2')
-		);
+        $validator = new ImageValidator(
+            $this->translator,
+            ['image' => __DIR__ . '/images/1024x683.png'],
+            ['image' => 'image_aspect:3,2']
+        );
 
-		$this->assertFalse($validator->passes());
-
-		$validator = new ImageValidator(
-			$this->translator,
-			array('image' => dirname(__FILE__) . '/images/1024x683.png'),
-			array('image' => 'image_aspect:3,2')
-		);
-
-		$this->assertTrue($validator->passes());
-	}
-
+        $this->assertTrue($validator->passes());
+    }
 }

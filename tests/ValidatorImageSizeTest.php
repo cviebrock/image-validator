@@ -1,123 +1,119 @@
-<?php
+<?php namespace Cviebrock\ImageValidator\Test;
 
 use Cviebrock\ImageValidator\ImageValidator;
+use Illuminate\Contracts\Translation\Translator;
+use Mockery;
+use PHPUnit_Framework_TestCase;
 
 
 class ValidatorImageSizeTest extends PHPUnit_Framework_TestCase
 {
-	protected $translator;
-	protected $data;
-	protected $rules;
 
+    protected $translator;
 
-	public function setUp()
-	{
-		$this->translator = Mockery::mock('Symfony\Component\Translation\TranslatorInterface');
-		$this->translator->shouldReceive('trans');
-		$this->data = array(
-			'image' => dirname(__FILE__) . '/images/200x250.png'
-		);
-	}
+    protected $data;
 
-	public function tearDown()
-	{
-		Mockery::close();
-	}
+    protected $rules;
 
-	public function testValidatesMatch()
-	{
+    public function setUp()
+    {
+        $this->translator = Mockery::mock(Translator::class);
+        $this->translator->shouldReceive('trans');
+        $this->data = [
+            'image' => __DIR__ . '/images/200x250.png',
+        ];
+    }
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:200,250' )
-		);
+    public function tearDown()
+    {
+        Mockery::close();
+    }
 
-		$this->assertTrue($validator->passes());
-	}
+    public function testValidatesMatch()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:200,250']
+        );
 
-	public function testValidatesSquare()
-	{
+        $this->assertTrue($validator->passes());
+    }
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:200' )
-		);
+    public function testValidatesSquare()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:200']
+        );
 
-		$this->assertTrue($validator->fails());
-	}
+        $this->assertTrue($validator->fails());
+    }
 
-	public function testValidatesLessThan()
-	{
+    public function testValidatesLessThan()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:<200,<250']
+        );
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:<200,<250' )
-		);
+        $this->assertTrue($validator->fails());
+    }
 
-		$this->assertTrue($validator->fails());
-	}
+    public function testValidatesLessThanEqual()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:<=200,<=250']
+        );
 
-	public function testValidatesLessThanEqual()
-	{
+        $this->assertTrue($validator->passes());
+    }
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:<=200,<=250' )
-		);
+    public function testValidatesGreaterThan()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:>200,>250']
+        );
 
-		$this->assertTrue($validator->passes());
-	}
+        $this->assertTrue($validator->fails());
+    }
 
-	public function testValidatesGreaterThan()
-	{
+    public function testValidatesGreaterThanEqual()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:>=200,>=250']
+        );
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:>200,>250' )
-		);
+        $this->assertTrue($validator->passes());
+    }
 
-		$this->assertTrue($validator->fails());
-	}
+    public function testValidatesAnySize()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:*,250']
+        );
 
-	public function testValidatesGreaterThanEqual()
-	{
+        $this->assertTrue($validator->passes());
+    }
 
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:>=200,>=250' )
-		);
+    public function testValidatesRange()
+    {
+        $validator = new ImageValidator(
+            $this->translator,
+            $this->data,
+            ['image' => 'image_size:200-300']
+        );
 
-		$this->assertTrue($validator->passes());
-	}
-
-	public function testValidatesAnySize()
-	{
-
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:*,250' )
-		);
-
-		$this->assertTrue($validator->passes());
-	}
-
-	public function testValidatesRange()
-	{
-
-		$validator = new ImageValidator(
-			$this->translator,
-			$this->data,
-			array( 'image' => 'image_size:200-300' )
-		);
-
-		$this->assertTrue($validator->passes());
-	}
-
+        $this->assertTrue($validator->passes());
+    }
 }
