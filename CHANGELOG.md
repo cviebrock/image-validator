@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.2.0 - 02-Feb-2017
+## 2.2.0 - 07-Feb-2017
 
 - Laravel 5.4 support
 
