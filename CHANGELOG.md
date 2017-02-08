@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.2.1 - 08-Feb-2017
+
+- Hungarian translation (#54, thanks @GaraiViktor)
+
+
 ## 2.2.0 - 07-Feb-2017
 
 - Laravel 5.4 support
