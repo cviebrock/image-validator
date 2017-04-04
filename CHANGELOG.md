@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.2.2 - 04-Apr-2017
+
+- Correction to Italian (#55, thanks @neomusic)
+
+
 ## 2.2.1 - 08-Feb-2017
 
 - Hungarian translation (#54, thanks @GaraiViktor)
@@ -71,6 +76,7 @@
 ## 1.0.5 - 11-Feb-2015
 
 - Fixed Turkish translation (#7, thanks @mayoz).
+- Fixed Italian translation (#55, thanks @neomusic).
 - Last version that works with Laravel 4.
 
 
