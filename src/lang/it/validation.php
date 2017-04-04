@@ -1,7 +1,7 @@
 <?php
 
 return array(
-  'image_size'          => 'Il campo :attribute dev\'essere :width in larghezza and :height in altezza.',
+  'image_size'          => 'Il campo :attribute dev\'essere :width in larghezza e :height in altezza.',
 
   'between'            => 'tra i :size1 e :size2 pixels',
   'lessthan'           => 'minore di :size pixels',
