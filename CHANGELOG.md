@@ -1,8 +1,9 @@
 # Changelog
 
-## v1.0.x - xx-xxx-2014
+## v1.0.5 - 04-Apr-2017
 
 - Fixed Turkish translation (#7, thanks @mayoz).
+- Fixed Italian translation (#5, thanks @neomusic).
  
 
 ## v1.0.4 - 17-Jun-2014
