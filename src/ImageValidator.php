@@ -5,7 +5,6 @@ use Illuminate\Validation\Validator;
 use RuntimeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-
 class ImageValidator extends Validator
 {
 
