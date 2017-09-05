@@ -10,6 +10,8 @@ Extra validation rules for dealing with images in Laravel 5.
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bc2c9e90-2edf-4047-9b3c-a5aa15da165b/mini.png)](https://insight.sensiolabs.com/projects/bc2c9e90-2edf-4047-9b3c-a5aa15da165b)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
+> *NOTE*: Laravel 5.5 now has [built-in validation rules for image dimensions](https://laravel.com/docs/5.5/validation#rule-dimensions)
+> so you probably don't need this package if you are using Laravel 5.5 or later.
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -31,6 +33,9 @@ Extra validation rules for dealing with images in Laravel 5.
 > |       4.*       |       1.x       |
 > |     5.0–5.3     |       2.1       |
 > |       5.4       |       2.2       |
+> |       5.5       |  not required†  |
+>
+> † Laravel 5.5 has [built-in validation rules for image dimensions](https://laravel.com/docs/5.5/validation#rule-dimensions).
 
 Install the package through [Composer](http://getcomposer.org).
 
