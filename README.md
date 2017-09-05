@@ -2,6 +2,10 @@
 
 Extra validation rules for dealing with images in Laravel 5.
 
+> *NOTE*: As of Laravel version 5.2, there are now
+[built-in validation rules for image dimensions and aspect ratios](https://laravel.com/docs/validation#rule-dimensions).
+> This package is not required and will no longer be maintained.
+
 [![Build Status](https://travis-ci.org/cviebrock/image-validator.svg?branch=master&format=flat)](https://travis-ci.org/cviebrock/image-validator)
 [![Total Downloads](https://poser.pugx.org/cviebrock/image-validator/downloads?format=flat)](https://packagist.org/packages/cviebrock/image-validator)
 [![Latest Stable Version](https://poser.pugx.org/cviebrock/image-validator/v/stable?format=flat)](https://packagist.org/packages/cviebrock/image-validator)
@@ -9,9 +13,6 @@ Extra validation rules for dealing with images in Laravel 5.
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cviebrock/image-validator/badges/quality-score.png?format=flat)](https://scrutinizer-ci.com/g/cviebrock/image-validator)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bc2c9e90-2edf-4047-9b3c-a5aa15da165b/mini.png)](https://insight.sensiolabs.com/projects/bc2c9e90-2edf-4047-9b3c-a5aa15da165b)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-
-> *NOTE*: Laravel 5.5 now has [built-in validation rules for image dimensions](https://laravel.com/docs/5.5/validation#rule-dimensions)
-> so you probably don't need this package if you are using Laravel 5.5 or later.
 
 * [Installation](#installation)
 * [Usage](#usage)
@@ -31,11 +32,11 @@ Extra validation rules for dealing with images in Laravel 5.
 > | Laravel Version | Package Version |
 > |:---------------:|:---------------:|
 > |       4.*       |       1.x       |
-> |     5.0–5.3     |       2.1       |
-> |       5.4       |       2.2       |
-> |       5.5       |  not required†  |
+> |     5.0–5.3     |       2.1†      |
+> |       5.4       |       2.2†      |
+> |       5.5       |  not supported† |
 >
-> † Laravel 5.5 has [built-in validation rules for image dimensions](https://laravel.com/docs/5.5/validation#rule-dimensions).
+> † Laravel 5.2 and later have [built-in validation rules for image dimensions](https://laravel.com/docs/5.5/validation#rule-dimensions).
 
 Install the package through [Composer](http://getcomposer.org).
 

@@ -4,7 +4,8 @@
   "keywords": [
     "laravel",
     "validator",
-    "image"
+    "image",
+    "deprecated"
   ],
   "homepage": "https://github.com/cviebrock/image-validator",
   "license": "MIT",
